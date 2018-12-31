@@ -44,6 +44,13 @@ export default class Register extends Component {
                     password: 'true',
                     secureTextEntry: true,
 
+                },
+                password_confirmation: {
+                    help: 'Repite el password',
+                    error: 'Los passwords no coinciden',
+                    password: true,
+                    secureTextEntry: true,
+                
                 }
             }
         };
@@ -55,12 +62,21 @@ export default class Register extends Component {
     register () {
         this.validate = this.refs.form.getValue();
         if(this.validate) {
-
+            firebase.auth().createUserWithEmailAndPassword(
+                this.validate.email, this.validate.password
+            )
+                .then (() => {
+                    Toast.showWithGravity('Registro correcto, Bienvenido', Toast.LONG, Toast.BOTTOM);
+                })
+                .catch ( err => {
+                    Toast.showWithGravity(err.message, Toast.LONG, Toast.BOTTOM);
+                })
         }
     }
 
     onChange (user) {
         this.setState({user});
+        this.validate = this.refs.form.getValue();
     }
 
     render () {
