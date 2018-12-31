@@ -14,11 +14,17 @@ export default class Start extends Component{
     };
 
     login() {
-
+        const navigateAction = NavigationActions.navigate({
+            routeName: 'Login'
+        });
+        this.props.navigation.dispatch(navigateAction)
     }
 
     register() {
-
+        const navigateAction = NavigationActions.navigate({
+            routeName: 'Register'
+        });
+        this.props.navigation.dispatch(navigateAction)
     }
 
     async facebook () { 

@@ -6,3 +6,4 @@ utils/*
 *.p12
 *.key
 *.mobileprovision
+utils/firebase.js
