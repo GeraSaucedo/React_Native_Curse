@@ -5,8 +5,10 @@ import * as firebase from 'firebase';
 firebase.initializeApp(firebaseConfig);
 import { StyleSheet, Text, View } from 'react-native';
 import GuestNavigation from './navigation/guest'
-import RestaurantEmpty from './components/Restaurant/RestaurantEmpty';
+//import RestaurantEmpty from './components/Restaurant/RestaurantEmpty';
+import LoggedNavigation from './navigation/logged'
 
+console.disableYellowBox = true;
 
 export default class App extends React.Component {
   constructor () {
@@ -42,7 +44,8 @@ export default class App extends React.Component {
     if (isLogged) {
       //return (<Text>Logueado</Text>)
       //return (<GuestNavigation/>)
-      return (<RestaurantEmpty text="No hay restaurantes disponibles"/>)
+      //return (<RestaurantEmpty text="No hay restaurantes disponibles"/>)
+      return (<LoggedNavigation></LoggedNavigation>)
     } else {
       return (<GuestNavigation/>)
     }
