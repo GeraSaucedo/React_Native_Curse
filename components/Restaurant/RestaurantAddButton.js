@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
-import AppButton from '../AppButton';
+import AppButton from '../AppButtonFullScreen';
 
 export default class RestaurantAddButton extends Component {
   render() {
