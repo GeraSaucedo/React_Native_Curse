@@ -1,7 +1,11 @@
 import React from 'react';
 import t from 'tcomb-form-native';
-const Form = t.form.Form;
+
 import sliderTemplate from './templates/slider'
+import { Text, View, StyleSheet } from 'react-native'
+
+const Form = t.form.Form;
+
 
 export const Restaurant = t.struct({
     name: t.String,
@@ -26,7 +30,7 @@ export const options = {
             config: {
                 step: 1,
                 min: 1,
-                max: 100
+                max: 100,
             },
             template: sliderTemplate
         },
@@ -35,16 +39,23 @@ export const options = {
             placeholder: 'Descripcion',
             multiline: true,
             stylesheet: {
-                ...Form.stylesheet.textbox,
-                normal: {
-                    ...Form.stylesheet.textbox.normal,
-                    height: 150
-                },
-                error: {
-                    ...Form.stylesheet.textbox.error,
-                    height: 150
+                ...Form.stylesheet,
+                textbox: {
+                    ...Form.stylesheet.textbox,
+                    normal: {
+                        ...Form.stylesheet.textbox.normal,
+                        height: 150,
+                    },
+                    error: {
+                        ...Form.stylesheet.textbox.error,
+                        height: 150,
+                    },
                 }
+
+            
+                
             }
+            
         }
     }
 };

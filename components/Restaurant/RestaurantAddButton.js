@@ -4,9 +4,11 @@ import AppButton from '../AppButton';
 
 export default class RestaurantAddButton extends Component {
   render() {
+    console.log('restaurant add button FILESSSSSS');
     const {addRestaurant} = this.props;
+    
     return (
-      <View style={StyleSheet.buttonContainer}>
+      <View style={styles.buttonContainer}>
         <AppButton
             bgColor="rgba(255, 38, 74, 0.6)"
             title="Añadir Restaurante"

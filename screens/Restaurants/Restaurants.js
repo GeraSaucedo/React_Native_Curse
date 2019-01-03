@@ -9,6 +9,7 @@ import { View, StyleSheet, FlatList } from 'react-native';
 import BackgroundImage from '../../components/BackgroundImage';
 import RestaurantEmpty from '../../components/Restaurant/RestaurantEmpty'
 import RestaurantAddButton from '../../components/Restaurant/RestaurantAddButton'
+import { NavigationActions } from 'react-navigation';
 
 export default class Restaurants extends Component {
     constructor () {
@@ -43,6 +44,7 @@ export default class Restaurants extends Component {
     }
 
     addRestaurant () {
+        console.log('BANDERA ADDRESTAURANT 11111111');
         const navigateAction = NavigationActions.navigate({
             routeName: 'AddRestaurant'       
         });
@@ -75,6 +77,7 @@ export default class Restaurants extends Component {
         };
 
         if( !restaurants.length){
+            console.log('IF DE RESTAURANTS .JS 2NDO IF')
             return (
                 <BackgroundImage source={require('../../assets/images/bg2.jpg')}>
                     <RestaurantEmpty text="No hay restaurantes" />
@@ -83,6 +86,7 @@ export default class Restaurants extends Component {
             );
         }
 
+        console.log('RETURN FINAL DEL RENDER RESTAURANTS .JS')
         return (
             <BackgroundImage source={require('../../assets/images/bg2.jpg')}>
                 

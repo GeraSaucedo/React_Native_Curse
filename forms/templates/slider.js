@@ -8,7 +8,7 @@ export default  sliderTemplate = (locals) => {
 
     return (
         <View>
-            <Text style={{fontWeight: 'bold', fontSize: '16'}}>
+            <Text style={{fontWeight: 'bold', fontSize: 16}}>
                 {locals.label} ({parseInt(locals.value)})
             </Text>
             <Slider
