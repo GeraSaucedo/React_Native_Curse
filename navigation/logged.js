@@ -6,6 +6,7 @@ import LogoutScreen from "../screens/Logout";
 import {DrawerNavigator, StackNavigator} from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Logout from '../screens/Logout';
+import DetailRestaurantScreen from '../screens/Restaurants/DetailRestaurant'
 
 const navigationOptions = {
     navigationOptions: {
@@ -32,7 +33,7 @@ const leftIcon = (navigation, icon) => <Icon
 
 const rightIcon = (navigation, icon) => <Icon
     name={icon}
-    style={{marginLeft: 20}}
+    style={{marginRight: 20}}
     size={20}
     color="white"
     onPress={() => navigation.navigate('ListRestaurants')}
@@ -55,6 +56,14 @@ const restaurantsScreenStack = StackNavigator(
                 headerRight: rightIcon(navigation, 'home'),
                 headerLeft: leftIcon(navigation,'bars')
             })
+        },
+        DetailRestaurant: {
+            screen: DetailRestaurantScreen,
+            navigationOptions: ({navigation}) => ({
+                title: 'Detalle del restaurante',
+                headerRight: rightIcon(navigation, 'home'),
+                headerLeft: leftIcon(navigation,'bars')
+            })
         }
     },
     navigationOptions
@@ -68,7 +77,7 @@ const logoutScreenStack = StackNavigator({
             drawerIcon: ({tintColor}) => (<Icon name="sign-out" size={24} style={{color: tintColor}} />)
         })
     }
-})
+});
 
 export default DrawerNavigator (
     {

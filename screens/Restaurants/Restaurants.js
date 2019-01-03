@@ -31,7 +31,7 @@ export default class Restaurants extends Component {
                     if: row.key,
                     name: row.val().name,
                     address: row.val().address,
-                    capacity: row.val.capacity,
+                    capacity: row.val().capacity,
                     description: row.val().description
                 })
             });
@@ -44,7 +44,6 @@ export default class Restaurants extends Component {
     }
 
     addRestaurant () {
-        console.log('BANDERA ADDRESTAURANT 11111111');
         const navigateAction = NavigationActions.navigate({
             routeName: 'AddRestaurant'       
         });
@@ -52,10 +51,14 @@ export default class Restaurants extends Component {
     }
 
     restaurantDetail (restaurant) {
-
+        const navigateAction = NavigationActions.navigate({
+            routeName: 'DetailRestaurant',
+            params: {restaurant}      
+        });
+        this.props.navigation.dispatch(navigateAction);
     }
 
-    renderRestaurant () {
+    renderRestaurant (restaurant) {
         return (
             <ListItem  
                 containerStyle={styles.item}
@@ -77,7 +80,7 @@ export default class Restaurants extends Component {
         };
 
         if( !restaurants.length){
-            console.log('IF DE RESTAURANTS .JS 2NDO IF')
+            
             return (
                 <BackgroundImage source={require('../../assets/images/bg2.jpg')}>
                     <RestaurantEmpty text="No hay restaurantes" />
@@ -86,7 +89,7 @@ export default class Restaurants extends Component {
             );
         }
 
-        console.log('RETURN FINAL DEL RENDER RESTAURANTS .JS')
+        
         return (
             <BackgroundImage source={require('../../assets/images/bg2.jpg')}>
                 

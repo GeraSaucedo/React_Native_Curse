@@ -4,7 +4,6 @@ import AppButton from '../AppButtonFullScreen';
 
 export default class RestaurantAddButton extends Component {
   render() {
-    console.log('restaurant add button FILESSSSSS');
     const {addRestaurant} = this.props;
     
     return (
