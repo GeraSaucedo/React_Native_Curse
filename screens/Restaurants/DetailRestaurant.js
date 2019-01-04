@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { NavigationActions } from 'react-navigation';
 import { ScrollView } from "react-native";
 import BackgroundImage from '../../components/BackgroundImage';
+import Restaurant from '../../components/Restaurant/Restaurant';
 
 export default class DetailRestaurant extends Component {
     constructor (props) {
@@ -26,6 +27,12 @@ export default class DetailRestaurant extends Component {
         return (
             <BackgroundImage source={require('../../assets/images/bg3.jpg')}>
                 <ScrollView>
+
+                    <Restaurant
+                        goHome={this.goHome.bind(this)}
+                        editRestaurant={this.editRestaurant.bind(this)}
+                        restaurant={restaurant}
+                    />
 
                 </ScrollView>
             </BackgroundImage>
