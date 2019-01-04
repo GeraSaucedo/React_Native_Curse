@@ -1,5 +1,5 @@
 import React from 'react';
-import t from 'tcomb-form-native';
+import t from "tcomb-form-native";
 const Form = t.form.Form;
 import sliderTemplate from './templates/slider';
 import slider from './templates/slider';
