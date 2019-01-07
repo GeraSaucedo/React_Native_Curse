@@ -28,7 +28,7 @@ export default class Restaurants extends Component {
             let restaurants = [];
             snapshot.forEach(row => {
                 restaurants.push({
-                    if: row.key,
+                    id: row.key,
                     name: row.val().name,
                     address: row.val().address,
                     capacity: row.val().capacity,

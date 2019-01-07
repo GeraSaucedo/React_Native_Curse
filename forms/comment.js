@@ -4,8 +4,8 @@ const Form = t.form.Form;
 import sliderTemplate from './templates/slider';
 import slider from './templates/slider';
 
-export const Comment = t.struct ({
-    rating: t.number,
+export const Comment = t.struct({
+    rating: t.Number,
     comment: t.maybe(t.String)
 });
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AppButton from "../AppButton";
 import {options, Comment} from "../../forms/comment";
-import t from "tcomb-form-native";
+import t from 'tcomb-form-native';
 const Form = t.form.Form;
 import {Card} from "react-native-elements";
 import {View} from "react-native";
@@ -9,8 +9,8 @@ import * as firebase from 'firebase';
 import Toast from 'react-native-simple-toast';
 
 export default class ComentForm extends Component {
-    constructor () {
-        super(); 
+    constructor (props) {
+        super(props); 
         this.state = {
             comment: {
                 comment: '',
@@ -20,14 +20,16 @@ export default class ComentForm extends Component {
     }
 
     addComment () {
-        const validate = this.ref.form.getValue();
+        const validate = this.refs.form.getValue();
         if(validate) {
             let data = {}
             let comment = Object.assign({}, validate);
-            comment.restaurant_id = this.props.restaurantId;
-            let ref = ref.push().key;
 
-            data[`${comment.restaurant_id}/${key}`] = comment;
+            
+            let ref = firebase.database().ref().child('comments');
+            const key = ref.push().key;
+
+            data[`${this.props.restaurantId}/${key}`] = comment;
 
             ref.update(data).then(() => {
                 this.setState((prevState, props) => {

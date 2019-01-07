@@ -34,24 +34,16 @@ export default class RestaurantRating extends Component {
 
     render () {
         const {rating} = this.state;
-        if(rating) {
-            return (
-                <View>
-                    <Rating
-                        ref="rating"
-                        imageSize={20}
-                        readonly
-                        startingValue={rating}
-                    />
-                </View>
-            )
-        }else {
-            return (
-                <View>
-                    <Text>No hay puntuaciones</Text>
-                </View>
-            )
-        }
+        return (
+            <View>
+                <Rating 
+                    ref="rating"
+                    imageSize={20}
+                    readonly
+                    startingValue={rating}
+                />
+            </View>
+        )
     }
 }
 
