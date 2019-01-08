@@ -5,8 +5,10 @@ import AddRestaurantScreen from "../screens/Restaurants/AddRestaurant"
 import LogoutScreen from "../screens/Logout";
 import {DrawerNavigator, StackNavigator} from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Logout from '../screens/Logout';
 import DetailRestaurantScreen from '../screens/Restaurants/DetailRestaurant'
+import EditRestaurantScreen from "../screens/Restaurants/EditRestaurant"
+import ProfileScreen from "../screens/Profile";
+
 
 const navigationOptions = {
     navigationOptions: {
@@ -64,9 +66,30 @@ const restaurantsScreenStack = StackNavigator(
                 headerRight: rightIcon(navigation, 'home'),
                 headerLeft: leftIcon(navigation,'bars')
             })
+        },
+        EditRestaurant: {
+            screen: EditRestaurantScreen,
+            navigationOptions: ({navigation}) => ({
+                title: 'Editar restaurante',
+                headerRight: rightIcon(navigation, 'home'),
+                headerLeft: leftIcon(navigation,'bars')
+            })
         }
     },
     navigationOptions
+);
+
+const profileScreenStack = StackNavigator({
+    ProfileScreen: {
+        screen: ProfileScreen,
+        navigationOptions: ({ navigation}) => ({
+            title: 'Perfil',
+            drawerIcon: ({tintColor}) => (<Icon name="user" size={24} style={{color: tintColor}}/>),
+            headerLeft: leftIcon(navigation, 'bars'),
+            headerRight: rightIcon(navigation, 'home'),
+        })
+    }
+},navigationOptions
 );
 
 const logoutScreenStack = StackNavigator({
@@ -83,6 +106,9 @@ export default DrawerNavigator (
     {
         RestaurantsScreen: {
             screen: restaurantsScreenStack
+        },
+        ProfileScreen: {
+            screen: profileScreenStack
         },
         logoutScreen: {
             screen: logoutScreenStack

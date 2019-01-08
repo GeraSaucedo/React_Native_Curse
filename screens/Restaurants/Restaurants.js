@@ -96,6 +96,7 @@ export default class Restaurants extends Component {
             <FlatList 
                 data={restaurants}
                 renderItem={(data) => this.renderRestaurant(data.item)}
+                keyExtractor={(data) => data.id}
             />
 
                 <RestaurantAddButton addRestaurant={this.addRestaurant.bind(this)}/>
