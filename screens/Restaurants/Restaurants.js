@@ -91,7 +91,7 @@ export default class Restaurants extends Component {
             search: search.charAt(0).toUpperCase() + search.slice(1)
         });
 
-        if (search.length >= 3) { //buscara hasta que tse escriban mas de 3 caracteres
+        if (search.length >= 3) { //buscara hasta que se escriban mas de 3 caracteres
             this._filterRestaurants(search);
             setTimeout(() => {
                 this._loadFirebaseRestaurants();
