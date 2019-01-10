@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
-import AppButton from '../AppButtonFullScreen';
+import AppButton from '../AppButton';
 
 export default class RestaurantAddButton extends Component {
   render() {
@@ -15,6 +15,7 @@ export default class RestaurantAddButton extends Component {
             iconName="plus"
             iconSize={30}
             iconColor="#fff"
+            setWidth={true}
         />
       </View>
     )

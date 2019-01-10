@@ -63,11 +63,10 @@ export default class Restaurants extends Component {
             <ListItem  
                 containerStyle={styles.item}
                 titleStyle={styles.title}
-                roundAvatar
                 title={`${restaurant.name} (Capacidad: ${restaurant.capacity})`}
-                avatar={this.state.restaurant_logo}
+                leftAvatar={{source: this.state.restaurant_logo}}
                 onPress={() => this.restaurantDetail(restaurant)}
-                rightIcon={{name: 'arrow-right', type: 'font-awesome', style: styles.listIconStyle}}
+                rightIcon={{name: 'arrow-right', type: 'font-awesome', marginRight: 10 ,  style: styles.listIconStyle}}
             />
         )
     }

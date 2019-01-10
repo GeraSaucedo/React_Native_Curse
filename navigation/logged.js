@@ -3,11 +3,12 @@ import { Text, View } from 'react-native'
 import RestaurantsScreen from "../screens/Restaurants/Restaurants";
 import AddRestaurantScreen from "../screens/Restaurants/AddRestaurant"
 import LogoutScreen from "../screens/Logout";
-import {DrawerNavigator, StackNavigator} from 'react-navigation';
+import {createDrawerNavigator, createStackNavigator} from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DetailRestaurantScreen from '../screens/Restaurants/DetailRestaurant'
 import EditRestaurantScreen from "../screens/Restaurants/EditRestaurant"
 import ProfileScreen from "../screens/Profile";
+
 
 
 const navigationOptions = {
@@ -30,7 +31,7 @@ const leftIcon = (navigation, icon) => <Icon
     style={{marginLeft: 20}}
     size={20}
     color="white"
-    onPress={() => navigation.navigate('DrawerOpen')}
+    onPress={() => navigation.openDrawer()}
 />;
 
 const rightIcon = (navigation, icon) => <Icon
@@ -41,13 +42,12 @@ const rightIcon = (navigation, icon) => <Icon
     onPress={() => navigation.navigate('ListRestaurants')}
 />;
 
-const restaurantsScreenStack = StackNavigator( 
+const restaurantsScreenStack = createStackNavigator( 
     {
         ListRestaurants: {
             screen: RestaurantsScreen,
             navigationOptions: ({navigation}) => ({
                 title: 'Restaurantes',
-                drawerIcon: ({tintColor}) => (<Icon name="home" size={24} style={{color: tintColor}} />),
                 headerLeft: leftIcon(navigation, 'bars')
             })
         },
@@ -79,12 +79,11 @@ const restaurantsScreenStack = StackNavigator(
     navigationOptions
 );
 
-const profileScreenStack = StackNavigator({
+const profileScreenStack = createStackNavigator({
     ProfileScreen: {
         screen: ProfileScreen,
         navigationOptions: ({ navigation}) => ({
             title: 'Perfil',
-            drawerIcon: ({tintColor}) => (<Icon name="user" size={24} style={{color: tintColor}}/>),
             headerLeft: leftIcon(navigation, 'bars'),
             headerRight: rightIcon(navigation, 'home'),
         })
@@ -92,26 +91,37 @@ const profileScreenStack = StackNavigator({
 },navigationOptions
 );
 
-const logoutScreenStack = StackNavigator({
+const logoutScreenStack = createStackNavigator({
     LogoutScreen: {
         screen: LogoutScreen,
         navigationOptions: ({ navigation}) => ({
             title: 'Cerrar sesion',
-            drawerIcon: ({tintColor}) => (<Icon name="sign-out" size={24} style={{color: tintColor}} />)
         })
     }
 });
 
-export default DrawerNavigator (
+export default createDrawerNavigator (
     {
         RestaurantsScreen: {
-            screen: restaurantsScreenStack
+            screen: restaurantsScreenStack,
+            navigationOptions: ({ navigation}) => ({
+                drawerLabel: 'Restaurantes',
+                drawerIcon: ({tintColor}) => (<Icon name="home" size={24} style={{color: tintColor}} />)
+            })
         },
         ProfileScreen: {
-            screen: profileScreenStack
+            screen: profileScreenStack,
+            navigationOptions: ({ navigation}) => ({
+                drawerLabel: 'Perfil',
+                drawerIcon: ({tintColor}) => (<Icon name="user" size={24} style={{color: tintColor}} />)
+            })
         },
         logoutScreen: {
-            screen: logoutScreenStack
+            screen: logoutScreenStack,
+            navigationOptions: ({ navigation}) => ({
+                drawerLabel: 'Cerrar sesion',
+                drawerIcon: ({tintColor}) => (<Icon name="sign-out" size={24} style={{color: tintColor}} />)
+            })
         }
     },
     {
